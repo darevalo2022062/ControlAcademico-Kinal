@@ -7,7 +7,7 @@ const studentPost = async (req, res) => {
     const { nombre, correo, password } = req.body;
     var bandera = false;
     const pass = await argon2.hash(password);
-    var alumno = new Student({ nombre, correo, password });
+    var alumno = new Student({ nombre, correo, pass });
 
     do {
         if (pass !== password) {
