@@ -12,13 +12,15 @@ const StudentSchema = Schema({
     password: {
         type: String,
         required: [true, 'Este es un campo obligatorio']
-    }, role: {
+    },
+    role: {
         type: String,
         required: true,
         default: 'STUDENT_ROLE'
     },
     cursos: {
-        type: String
+        type: String,
+        default : 'NONE'
     },
     estado: {
         type: Boolean,
