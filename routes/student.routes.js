@@ -1,6 +1,6 @@
-const { Router, body } = require('express');
+const { Router } = require('express');
 const { studentPost } = require('../controllers/studen.controller');
-const { check } = require('express-validator');
+const { check, body } = require('express-validator');
 
 const router = Router();
 
