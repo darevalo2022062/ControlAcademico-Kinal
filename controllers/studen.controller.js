@@ -4,13 +4,16 @@ const argon2 = require('argon2');
 //ENVIAR ->
 const studentPost = async (req, res) => {
     console.log("LLEGa hasTA AQUi");
-    const { nombre, correo, password } = req.body;
+    var { nombre, correo, password } = req.body;
     var bandera = false;
     const pass = await argon2.hash(password);
-    var alumno = new Student({ nombre, correo, pass });
+
+    console.log(password, "  |  ", pass);
 
     do {
         if (pass !== password) {
+            password = pass;
+            var alumno = new Student({ nombre, correo, password });
             await alumno.save();
             bandera = false;
         } else {

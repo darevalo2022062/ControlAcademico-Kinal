@@ -8,8 +8,7 @@ router.post(
     "/",
     [
         body('username').notEmpty(),
-        body('correo').isEmail(),
-        body('password').notEmpty().isLength({ min: 5 })
+        body('correo').isEmail()
     ], studentPost
 );
 
