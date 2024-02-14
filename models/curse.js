@@ -10,8 +10,7 @@ const CurseSchema = Schema({
         required: [true, "La descripción del curso es obligatoria"]
     },
     maestro: {
-        type: String,
-        required: [true, "El maestro del curso es obligatorio"]
+        type: String
     },
     cantidadDeModulos: {
         type: String,
