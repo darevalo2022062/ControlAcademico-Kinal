@@ -2,7 +2,8 @@ const { response } = require('express');
 const Curse = require('../models/curse');
 
 const cursoPost = async (req, res) => {
-    const { nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion } = req.body;
+    const { nombre, descripcion, cantidadDeModulos, duracionTotal, fechaFinalizacion } = req.body;
+    var maestro = '';
     const curse = new Curse({ nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion });
     await curse.save();
 
