@@ -7,7 +7,8 @@ class Server {
         this.app = express();
         this.port = process.env.PORT_NUMBER;
         this.studentRoute = '/api/student';
-        this.curseRoute = '/api/curse'
+        this.curseRoute = '/api/curse';
+        this.teacherRoute = '/api/teacher'
         this.conectDB();
         this.middlewares();
         this.routes();
@@ -27,6 +28,7 @@ class Server {
     routes() {
         this.app.use(this.studentRoute, require('../routes/student.routes'));
         this.app.use(this.curseRoute, require('../routes/curse.routes'));
+        this.app.use(this.teacherRoute, require('../routes/teacher.routes'));
     }
 
     async conectDB() {
