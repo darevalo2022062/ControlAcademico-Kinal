@@ -1,4 +1,5 @@
 const Student = require('../models/student');
+const Teacher = require('../models/teacher');
 
 const studentExists = async (correo = '') => {
     const correoExistente = await Student.findOne({ correo });
