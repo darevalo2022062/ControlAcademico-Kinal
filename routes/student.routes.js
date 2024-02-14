@@ -11,7 +11,7 @@ router.post(
     [
         body('username').notEmpty(),
         body('correo').isEmail(),
-        body('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
+        check('password').isLength({ min: 6 }),
         check('correo').custom(studentExists),
         validar
     ], studentPost
