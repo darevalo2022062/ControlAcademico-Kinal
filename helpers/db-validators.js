@@ -3,7 +3,7 @@ const Teacher = require('../models/teacher');
 
 const studentExists = async (correo = '') => {
     const correoExistente = await Student.findOne({ correo });
-    if (correoExistente.correo == correo) {
+    if (correoExistente) {
         throw new Error(`El email ya fue registrado`);
     }
 }
