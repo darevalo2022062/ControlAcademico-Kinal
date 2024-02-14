@@ -10,9 +10,9 @@ router.post(
     [
         check("nombre", "El nombre es obligatorio").not().isEmpty(),
         check("descripcion","La descripción del curso es obligatoria").not().isEmpty(),
-        check("maestro").custom(),
+        //check("maestro").custom(),
         check("cantidadDeModulos","La cantidad de modulos del curso es obligatoria").not().isEmpty(),
-        check("fechaFinalizacion").custom(),
+        //check("fechaFinalizacion").custom(),
         validar
     ], cursoPost
 );
