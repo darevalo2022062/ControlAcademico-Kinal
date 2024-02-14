@@ -10,3 +10,7 @@ const cursoPost = async (req, res) => {
         curse
     });
 }
+
+module.exports = {
+    cursoPost
+}
