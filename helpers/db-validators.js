@@ -8,6 +8,11 @@ const studentExists = async (correo = '') => {
     }
 }
 
+const tipoRole = async () => {
+    if(localStorage.getItem(""));
+}
+
 module.exports = {
-    studentExists
+    studentExists,
+    tipoRole
 }
