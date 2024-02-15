@@ -1,4 +1,5 @@
 const { response } = require('express');
+const Teacher = require('../models/teacher');
 const Curse = require('../models/curse');
 
 const cursoPost = async (req, res) => {
