@@ -9,7 +9,14 @@ const studentExists = async (correo = '') => {
 }
 
 const tipoRole = async () => {
-    if(localStorage.getItem(""));
+
+    Teacher.forEach(element => {
+        if (localStorage.getItem("Sesión_actual") == element.correo && element.role == "") {
+
+        }
+    });
+
+
 }
 
 module.exports = {
