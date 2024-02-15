@@ -9,8 +9,8 @@ const router = Router();
 router.post(
     "/",
     [
-        body('username').notEmpty(),
-        body('correo').isEmail(),
+        check("nombre","El nombre es obligatorio").not().isEmpty(),
+        check("correo","El correo es obligatorio").not().isEmpty(),
         check('password').isLength({ min: 6 }),
         check('correo').custom(studentExists),
         validar
