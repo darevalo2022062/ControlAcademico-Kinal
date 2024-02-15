@@ -48,7 +48,7 @@ const loginGet = async (req, res = '') => {
         res.status(200).json({
             msg: `SE INICIO SESION, BIENVENIDO ${log}`
         });
-        localStorage.setItem("Sesión_actual", correo);
+        global.sesion = correo;
     } else {
         res.status(400).json({
             msg: `ALGUNO DE LOS DATOS NO ES CORRECTO`

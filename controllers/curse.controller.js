@@ -4,7 +4,7 @@ const Curse = require('../models/curse');
 
 const cursoPost = async (req, res) => {
     const { nombre, descripcion, cantidadDeModulos, duracionTotal, fechaFinalizacion } = req.body;
-    var maestro = '';
+    var maestro = global.nameTeacher;
     const curse = new Curse({ nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion });
     await curse.save();
 

@@ -13,6 +13,7 @@ class Server {
         this.conectDB();
         this.middlewares();
         this.routes();
+        global.sesion = "";
     }
 
     middlewares() {
