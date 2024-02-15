@@ -16,7 +16,7 @@ const TeacherSchema = Schema({
     role: {
         type: String,
         required: true,
-        default: 'STUDENT_ROLE'
+        default: 'TEACHER_ROLE'
     },
     tituloProfesional: {
         type: String,
