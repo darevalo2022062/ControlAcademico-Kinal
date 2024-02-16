@@ -23,6 +23,8 @@ const teacherExists = async (correo = '') => {
     }
 }
 
+const 
+
 const tipoRole = async (req, res = "") => {
     const query = { estado: true };
     var bandera = false;
