@@ -5,7 +5,7 @@ const { loginGet } = require('../controllers/auth.controller');
 const router = Router();
 
 router.get(
-    "/",
+    "/login",
     [
         check("correo", "Ingrese un correo valido").isEmail(),
         check("password").not().isEmpty(),
