@@ -1,4 +1,3 @@
-const Login = require('../models/login');
 const Teacher = require('../models/teacher');
 const Student = require('../models/student');
 
