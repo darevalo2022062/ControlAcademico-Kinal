@@ -9,7 +9,7 @@ class Server {
         this.studentRoute = '/api/student';
         this.curseRoute = '/api/curse';
         this.teacherRoute = '/api/teacher'
-        this.loginRoute = '/api/login'
+        this.authRoute = '/api/auth'
         this.conectDB();
         this.middlewares();
         this.routes();
@@ -30,7 +30,7 @@ class Server {
         this.app.use(this.studentRoute, require('../routes/student.routes'));
         this.app.use(this.curseRoute, require('../routes/curse.routes'));
         this.app.use(this.teacherRoute, require('../routes/teacher.routes'));
-        this.app.use(this.loginRoute, require('../routes/login.routes'));
+        this.app.use(this.authRoute, require('../routes/auth.routes'));
     }
 
     async conectDB() {
