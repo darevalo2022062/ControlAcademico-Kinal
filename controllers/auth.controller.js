@@ -43,6 +43,8 @@ const loginGet = async (req, res = '') => {
 
     if (comproba) {
         const token = await generarJWT(id);
+        global.tokenAcces = null;
+        global.tokenAcces = token;
         res.status(200).json({
             msg: `SE INICIO SESION, BIENVENIDO ${log} | -> token: ${token}`
         });
