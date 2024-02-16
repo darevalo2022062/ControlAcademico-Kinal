@@ -2,13 +2,14 @@ const Teacher = require('../models/teacher');
 const Student = require('../models/student');
 
 const argon2 = require('argon2');
+const { generarJWT } = require('../helpers/generar-jwt');
 
 const loginGet = async (req, res = '') => {
     var { correo, password } = req.body;
-    console.log(`Datos que llegan: ${correo} | ${password}`);
     const query = { estado: true };
     var comproba = false;
     var log = '';
+    var id = '';
     var claveCorrecta = false;
 
     const [maestro] = await Promise.all([
@@ -23,7 +24,8 @@ const loginGet = async (req, res = '') => {
         claveCorrecta = await argon2.verify(element.password, password);
         if (element.correo == correo && claveCorrecta == true) {
             comproba = true;
-            log = 'Alumno';
+            log = 'ALUMNO';
+            id = element._id;
         }
     }
 
@@ -32,18 +34,19 @@ const loginGet = async (req, res = '') => {
             claveCorrecta = await argon2.verify(element.password, password);
             if (element.correo == correo && claveCorrecta == true) {
                 comproba = true;
-                log = 'Maestro';
-
+                log = 'MESTRO';
+                id = element._id;
             }
         }
 
     }
 
     if (comproba) {
+        const token = await generarJWT(id);
         res.status(200).json({
-            msg: `SE INICIO SESION, BIENVENIDO ${log}`
+            msg: `SE INICIO SESION, BIENVENIDO ${log} | -> token: ${token}`
         });
-        localStorage.setItem("Sesión_actual", correo);
+
     } else {
         res.status(400).json({
             msg: `ALGUNO DE LOS DATOS NO ES CORRECTO`
