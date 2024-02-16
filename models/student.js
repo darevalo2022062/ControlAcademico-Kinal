@@ -19,7 +19,7 @@ const StudentSchema = Schema({
         default: 'STUDENT_ROLE'
     },
     cursos: {
-        type: String,
+        type: Array,
         default : 'NONE'
     },
     estado: {

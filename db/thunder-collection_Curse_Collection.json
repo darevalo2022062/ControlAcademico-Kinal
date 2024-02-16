@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Curse_Collection",
+    "dateExported": "2024-02-16T17:57:46.441Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "33e224e9-f48f-4c8b-afc2-9eda34635909",
+            "colId": "e7b4b00e-1f75-48ea-8d14-49bcc6dd0be6",
+            "containerId": "",
+            "name": "CursePost",
+            "url": "http://localhost:3000/api/curse",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-16T13:48:59.781Z",
+            "modified": "2024-02-16T16:33:08.638Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Matematica I\",\n  \"descripcion\":\"Calculo 1, el estudio\",\n  \"cantidadDeModulos\":\"3\",\n  \"duracionTotal\":\"5 meses\",\n  \"fechaFinalizacion\":\"19 de septiembre de 2024\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "27bdb1a1-93e3-43d9-a3be-23e9e19a9a89",
+            "colId": "e7b4b00e-1f75-48ea-8d14-49bcc6dd0be6",
+            "containerId": "",
+            "name": "CurseGet",
+            "url": "http://localhost:3000/api/curse/misCursos",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-16T16:23:03.502Z",
+            "modified": "2024-02-16T16:27:01.204Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

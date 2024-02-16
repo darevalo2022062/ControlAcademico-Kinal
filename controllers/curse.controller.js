@@ -59,8 +59,6 @@ const cursoGet = async (req, res) => {
         });
     }
 
-
-
 }
 
 module.exports = {
