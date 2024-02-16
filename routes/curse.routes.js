@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { cursoPost } = require('../controllers/curse.controller');
+const { cursoPost, cursoGet } = require('../controllers/curse.controller');
 const { validar } = require('../middlewares/validar-campos');
 const { validarToken } = require('../middlewares/validar-jwt');
 const { validarMaestro } = require('../middlewares/validar-role');
@@ -19,6 +19,15 @@ router.post(
         check("cantidadDeModulos", "La cantidad de modulos del curso es obligatoria").not().isEmpty(),
         validar,
     ], cursoPost
+);
+
+router.get(
+    '/misCursos',
+    [
+        validarToken,
+        validarMaestro,
+        validar
+    ], cursoGet
 );
 
 
