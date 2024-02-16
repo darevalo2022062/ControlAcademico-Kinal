@@ -37,7 +37,7 @@ const cursoGet = async (req, res) => {
 
         } else if (teacher) {
             const maestro = teacher.nombre;
-            const query = { maestro: maestro };
+            const query = { maestro: maestro, estado: true };
             [cursos] = await Promise.all([
                 Curse.find(query)
             ]);

@@ -23,6 +23,10 @@ const CurseSchema = Schema({
     fechaFinalizacion: {
         type: String,
         required: [true, "La fecha de finalización del curso es obligatoria"]
+    },
+    estado: {
+        type: Boolean,
+        default: true
     }
 });
 
