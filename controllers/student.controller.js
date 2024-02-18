@@ -37,7 +37,7 @@ const asignarmeCurso = async (req, res) => {
     cursosAlumno = student.cursos;
     var cursosNew = '';
 
-    const cursoAgregar = await Curse.findOne({ nombre: curso });
+    const cursoAgregar = await Curse.findOne({ nombre: curso, estado: true });
 
     if (!cursoAgregar) {
         return res.status(400).json({

@@ -43,8 +43,12 @@ const cursoGet = async (req, res) => {
             for (const element of cursosName) {
                 var query = { nombre: element, estado: true };
                 cursoA = await Curse.findOne(query);
-                const { nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion } = cursoA;
-                cursos.push({ nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion });
+
+                if (cursoA) {
+                    const { nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion } = cursoA;
+                    cursos.push({ nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion });
+                }
+
             }
 
 
@@ -103,8 +107,68 @@ const cursoDelete = async (req, res) => {
 
 }
 
+const cursoUpdate = async (req, res) => {
+    const { nombre, nuevoNombre, descripcion, cantidadDeModulos, duracionTotal, fechaFinalizacion } = req.body;
+    const token = global.tokenAcces;
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const teacher = await Teacher.findById(uid);
+    var bandera = false;
+    var curso = '';
+    const cursos = await Curse.findOne({ maestro: teacher.nombre, estado: true, nombre: nombre });
+
+    if (!cursos) {
+        return res.status(400).json({
+            msg: "El curso no existe o no te pertenece"
+        });
+    } else {
+        //BSUQUEDA POR ALUMNO
+        const estudiantes = await Student.find({ estado: true });
+
+        for (const element of estudiantes) {
+            var contador = -1;
+            var bandera = false;
+
+            var cursosEstudiante = '';
+            cursosEstudiante = element.cursos;
+
+            for (var cursoE of cursosEstudiante) {
+                contador++;
+                if (cursoE == cursos.nombre) {
+                    bandera = true;
+
+                }
+            }
+
+            if (contador !== 0 && bandera == true) {
+                bandera = false;
+                cursosEstudiante[contador] = nuevoNombre;
+                await Student.findByIdAndUpdate(element._id, { cursos: cursosEstudiante });
+            }
+        }
+
+        //Nueva ACTUALIZACIÓN
+        await Curse.findByIdAndUpdate(cursos._id,
+            {
+                nombre: nuevoNombre,
+                descripcion: descripcion,
+                cantidadDeModulos: cantidadDeModulos,
+                duracionTotal: duracionTotal,
+                fechaFinalizacion: fechaFinalizacion
+            });
+
+
+
+    }
+
+    res.status(200).json({
+        msg: "Actualziado con exito!",
+    });
+
+}
+
 module.exports = {
     cursoPost,
     cursoGet,
-    cursoDelete
+    cursoDelete,
+    cursoUpdate
 }
