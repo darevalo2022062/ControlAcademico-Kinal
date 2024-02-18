@@ -35,6 +35,13 @@ const cursoGet = async (req, res) => {
         if (!teacher) {
             const student = await Student.findById(uid);
             let cursosName = student.cursos;
+
+            if (cursosName == 'NONE') {
+                return res.status(400).json({
+                    msg: "No te enceuntras asignado a ningun curso"
+                });
+            }
+
             for (const element of cursosName) {
                 var query = { nombre: element, estado: true };
                 cursoA = await Curse.findOne(query);
