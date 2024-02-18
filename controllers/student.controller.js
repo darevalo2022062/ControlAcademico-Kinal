@@ -97,7 +97,7 @@ const deleteStudent = async (req, res) => {
     const confirm = await argon2.verify(student.password, password);
 
     if (confirm) {
-        await Student.findByIdAndDelete(uid);
+        await Student.findByIdAndUpdate(uid, { estado: false });
         global.tokenAcces = '';
     } else {
         return res.status(200).json({
