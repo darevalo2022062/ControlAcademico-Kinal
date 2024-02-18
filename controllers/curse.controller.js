@@ -30,11 +30,18 @@ const cursoGet = async (req, res) => {
         const token = global.tokenAcces;
         const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
         const teacher = await Teacher.findById(uid);
-        var [cursos] = '';
+        var cursos = [];
         //Identifiacion Maestro/alumno
         if (!teacher) {
             const student = await Student.findById(uid);
-            cursos = student.cursos;
+            let cursosName = student.cursos;
+            for (const element of cursosName) {
+                var query = { nombre: element, estado: true };
+                cursoA = await Curse.findOne(query);
+                const { nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion } = cursoA;
+                cursos.push({ nombre, descripcion, maestro, cantidadDeModulos, duracionTotal, fechaFinalizacion });
+            }
+
 
         } else if (teacher) {
             const maestro = teacher.nombre;
@@ -44,9 +51,6 @@ const cursoGet = async (req, res) => {
                 Curse.find(query)
             ]);
 
-            /*cursos.forEach(element => {
-                cursos.push(element.nombre);
-            });*/
         }
 
         if (cursos == '') {
