@@ -1,6 +1,7 @@
 const Student = require('../models/student');
 const argon2 = require('argon2');
 const jwt = require("jsonwebtoken");
+const Curse = require('../models/curse');
 
 //ENVIAR ->
 const studentPost = async (req, res) => {
@@ -26,7 +27,7 @@ const studentPost = async (req, res) => {
 
 //ASIGNARME A CURSOS
 const asignarmeCurso = async (req, res) => {
-    console.log('LLEGA a ASiGNARMECURSO');
+
     var { curso } = req.body;
     const token = global.tokenAcces;
 
@@ -36,20 +37,40 @@ const asignarmeCurso = async (req, res) => {
     cursosAlumno = student.cursos;
     var cursosNew = '';
 
-    
+    const cursoAgregar = await Curse.findOne({ nombre: curso });
+
+    if (!cursoAgregar) {
+        return res.status(400).json({
+            msg: "El curso que buscas no existe!"
+        });
+    }
+
+    console.log("CANTIDAD DE CURSOS -> " + cursosAlumno.length);
 
     if (cursosAlumno == 'NONE') {
-        console.log('Entra si es NONE');
         cursosNew = curso;
-        console.log(uid);
-        await Student.findByIdAndUpdate(uid, {cursos:cursosNew});
+        await Student.findByIdAndUpdate(uid, { cursos: cursosNew });
 
-    } else if (cursosAlumno.length < 4) {
-        console.log('Entra si es <4');
+    } else if (cursosAlumno.length < 3) {
+
         cursosNew = student.cursos;
-        cursosNew.push(curso);
-        await Student.findByIdAndUpdate(uid, {cursos:cursosNew});
 
+        for (const element of cursosNew) {
+
+            if (element == curso) {
+                return res.status(400).json({
+                    msg: "Ya te encuentras asignado a ese curso"
+                });
+            }
+        }
+
+        cursosNew.push(curso);
+        await Student.findByIdAndUpdate(uid, { cursos: cursosNew });
+
+    } else {
+        return res.status(400).json({
+            msg: "Unicamente puedes asignarte a 3 cursos!"
+        });
     }
 
     res.status(200).json({
