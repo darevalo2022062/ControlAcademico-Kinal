@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { studentPost, asignarmeCurso } = require('../controllers/student.controller');
+const { studentPost, asignarmeCurso, editStudent } = require('../controllers/student.controller');
 const { check, body } = require('express-validator');
 const { studentExists } = require('../helpers/db-validators')
 const { validar } = require('../middlewares/validar-campos');
@@ -27,6 +27,17 @@ router.put(
         validarAlumno,
         validar
     ], asignarmeCurso
+);
+
+router.put(
+    "/editProfile",
+    [
+        validarToken,
+        validarAlumno,
+        check("nombre", "El nombre es obligatorio").not().isEmpty(),
+        check('password').isLength({ min: 6 }),
+        validar
+    ], editStudent
 );
 
 module.exports = router;

@@ -45,8 +45,6 @@ const asignarmeCurso = async (req, res) => {
         });
     }
 
-    console.log("CANTIDAD DE CURSOS -> " + cursosAlumno.length);
-
     if (cursosAlumno == 'NONE') {
         cursosNew = curso;
         await Student.findByIdAndUpdate(uid, { cursos: cursosNew });
@@ -77,16 +75,24 @@ const asignarmeCurso = async (req, res) => {
         msg: "Actualzado"
     });
 
-
-
-
-    //const cursosAlumno = [{ curso }];
-
-
-
 }
+
+const editStudent = async (req, res) => {
+    var { nombre, password } = req.body;
+    const token = global.tokenAcces;
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const pass = await argon2.hash(password);
+    password = pass;
+    await Student.findByIdAndUpdate(uid, { nombre: nombre, password: password });
+    res.status(200).json({
+        msg: "Actualzado"
+    });
+}
+
+
 
 module.exports = {
     studentPost,
-    asignarmeCurso
+    asignarmeCurso,
+    editStudent
 }
