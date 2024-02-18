@@ -89,10 +89,33 @@ const editStudent = async (req, res) => {
     });
 }
 
+const deleteStudent = async (req, res) => {
+    var { password } = req.body;
+    const token = global.tokenAcces;
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const student = await Student.findById(uid);
+    const confirm = await argon2.verify(student.password, password);
+
+    if (confirm) {
+        await Student.findByIdAndDelete(uid);
+        global.tokenAcces = '';
+    } else {
+        return res.status(200).json({
+            msg: "La contraseña no es la Correcta"
+        });
+    }
+
+    res.status(200).json({
+        msg: "Perfil Eliminado | SESIÓN EXPIRADA"
+    });
+
+}
+
 
 
 module.exports = {
     studentPost,
     asignarmeCurso,
-    editStudent
+    editStudent,
+    deleteStudent
 }
