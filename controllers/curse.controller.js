@@ -35,6 +35,9 @@ const cursoGet = async (req, res) => {
         if (!teacher) {
             const student = await Student.findById(uid);
             let cursosName = student.cursos;
+
+            
+
             for (const element of cursosName) {
                 var query = { nombre: element, estado: true };
                 cursoA = await Curse.findOne(query);
