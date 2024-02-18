@@ -34,13 +34,19 @@ const cursoGet = async (req, res) => {
         //Identifiacion Maestro/alumno
         if (!teacher) {
             const student = await Student.findById(uid);
+            cursos = student.cursos;
 
         } else if (teacher) {
             const maestro = teacher.nombre;
             const query = { maestro: maestro, estado: true };
+
             [cursos] = await Promise.all([
                 Curse.find(query)
             ]);
+
+            /*cursos.forEach(element => {
+                cursos.push(element.nombre);
+            });*/
         }
 
         if (cursos == '') {
