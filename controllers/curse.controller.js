@@ -76,7 +76,35 @@ const cursoGet = async (req, res) => {
 
 }
 
+const cursoDelete = async (req, res) => {
+    const { curso } = req.body;
+    const token = global.tokenAcces;
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    const teacher = await Teacher.findById(uid);
+    var bandera = false;
+
+    const cursos = await Curse.find({ maestro: teacher.nombre, estado: true });
+    cursos.forEach(element => {
+        if (element.nombre == curso) {
+            bandera = true;
+        }
+    });
+
+    if (!bandera) {
+        return res.status(400).json({
+            msg: "Este curso No existe o no te pertenece"
+        });
+    } else {
+        await Curse.updateOne({ maestro: teacher.nombre, nombre: curso }, { estado: false });
+        res.status(200).json({
+            msg: "ELIMINADO"
+        });
+    }
+
+}
+
 module.exports = {
     cursoPost,
-    cursoGet
+    cursoGet,
+    cursoDelete
 }

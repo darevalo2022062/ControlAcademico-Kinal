@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { cursoPost, cursoGet } = require('../controllers/curse.controller');
+const { cursoPost, cursoGet, cursoDelete } = require('../controllers/curse.controller');
 const { validar } = require('../middlewares/validar-campos');
 const { validarToken } = require('../middlewares/validar-jwt');
 const { validarMaestro } = require('../middlewares/validar-role');
@@ -27,6 +27,16 @@ router.get(
         validarToken,
         validar
     ], cursoGet
+);
+
+router.delete(
+    "/delete",
+    [
+        validarToken,
+        validarMaestro,
+        check("curso").not().isEmpty(),
+        validar
+    ], cursoDelete
 );
 
 
