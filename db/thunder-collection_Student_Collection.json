@@ -1,0 +1,85 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Student_Collection",
+    "dateExported": "2024-02-18T20:25:49.393Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4556ffe6-0039-4098-a015-ba375dc414b7",
+            "colId": "89fa8f9a-a0ed-4e16-b397-e9194a83d32e",
+            "containerId": "",
+            "name": "StudentPost_RegistroAlumno",
+            "url": "http://localhost:3000/api/student",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-18T03:08:30.371Z",
+            "modified": "2024-02-18T20:12:28.941Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Alumno\",\n  \"correo\":\"Alumno@gmail.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dda507f6-12fe-4a2a-942d-c361998139de",
+            "colId": "89fa8f9a-a0ed-4e16-b397-e9194a83d32e",
+            "containerId": "",
+            "name": "StudentPut_AsignarmeCursos",
+            "url": "http://localhost:3000/api/student/asignarme",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-02-18T03:08:30.372Z",
+            "modified": "2024-02-18T20:19:36.609Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"curso\":\"NOSE\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f01b4219-1d69-4bd0-95ef-52bc3aeb6e08",
+            "colId": "89fa8f9a-a0ed-4e16-b397-e9194a83d32e",
+            "containerId": "",
+            "name": "StudentPut_EditProfile",
+            "url": "http://localhost:3000/api/student/editProfile",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-18T16:54:45.833Z",
+            "modified": "2024-02-18T17:02:12.761Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"David\",\n  \"password\":\"654321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "754627ec-0ed1-4db9-ac22-e2630bf0a4fd",
+            "colId": "89fa8f9a-a0ed-4e16-b397-e9194a83d32e",
+            "containerId": "",
+            "name": "StudentDelete_EliminarPerfil",
+            "url": "http://localhost:3000/api/student/delete",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-18T17:12:42.173Z",
+            "modified": "2024-02-18T17:24:18.388Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\": \"654321\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

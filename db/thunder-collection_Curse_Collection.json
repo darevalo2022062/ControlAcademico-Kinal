@@ -1,0 +1,80 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Curse_Collection",
+    "dateExported": "2024-02-18T20:25:41.452Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3b09f187-9d35-49a8-b78d-1437dc24a93b",
+            "colId": "305abd75-37e3-46ea-8aa7-9f8eccf5fa48",
+            "containerId": "",
+            "name": "CursePost_CrearCurso",
+            "url": "http://localhost:3000/api/curse",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-18T03:08:30.340Z",
+            "modified": "2024-02-18T20:19:23.004Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"NOSE\",\n  \"descripcion\":\"Estudio de la contabilidad y sus asociaciones al mundo real\",\n  \"cantidadDeModulos\":\"3\",\n  \"duracionTotal\":\"5 meses\",\n  \"fechaFinalizacion\":\"19 de septiembre de 2024\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "607a51e8-336b-4d23-a380-b79ed3bfaf4d",
+            "colId": "305abd75-37e3-46ea-8aa7-9f8eccf5fa48",
+            "containerId": "",
+            "name": "CurseGet_MostrarCursos",
+            "url": "http://localhost:3000/api/curse/misCursos",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-18T03:08:30.341Z",
+            "modified": "2024-02-18T03:17:00.468Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4473e5c8-52e2-4e3f-886a-3783d64a1c9f",
+            "colId": "305abd75-37e3-46ea-8aa7-9f8eccf5fa48",
+            "containerId": "",
+            "name": "CurseDelete_EliminarCurso",
+            "url": "http://localhost:3000/api/curse/delete",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-18T17:54:00.140Z",
+            "modified": "2024-02-18T20:19:54.763Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"curso\":\"Mate\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "02139068-5b3f-497e-9675-d1f717b5d0e0",
+            "colId": "305abd75-37e3-46ea-8aa7-9f8eccf5fa48",
+            "containerId": "",
+            "name": "CursePut_ActualizarCurso",
+            "url": "http://localhost:3000/api/curse/update",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-02-18T18:36:12.097Z",
+            "modified": "2024-02-18T20:20:03.096Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Fisica\",\n  \"nuevoNombre\":\"MESSI\",\n  \"cantidadDeModulos\":\"5\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
