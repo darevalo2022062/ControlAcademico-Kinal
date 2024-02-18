@@ -25,7 +25,6 @@ router.get(
     '/misCursos',
     [
         validarToken,
-        validarMaestro,
         validar
     ], cursoGet
 );
